@@ -1,5 +1,5 @@
 name: DocEye - Documentation Drift Detector
-description: Detect documentation drift by cross-checking documentation against repository files, package metadata, commands, workflows, and project configuration.
+description: Detect documentation drift by checking docs against repository files, commands, packages, workflows and configuration.
 author: DocEye contributors
 branding:
   icon: eye
