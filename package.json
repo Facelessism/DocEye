@@ -1,0 +1,37 @@
+{
+  "name": "doceye",
+  "version": "1.1.0",
+  "description": "GitHub Action that detects documentation drift by cross-checking documentation against the repository.",
+  "private": true,
+  "license": "MIT",
+  "packageManager": "pnpm@11.19.0",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "build": "ncc build src/index.ts -o dist --source-map --license licenses.txt",
+    "build:cli": "ncc build src/bin.ts -o dist-cli",
+    "doceye": "node dist-cli/index.js"
+  },
+  "dependencies": {
+    "@actions/core": "^1.11.1",
+    "@actions/github": "^6.0.1",
+    "remark-parse": "^11.0.0",
+    "semver": "^7.7.2",
+    "unified": "^11.0.5",
+    "yaml": "^2.8.0"
+  },
+  "devDependencies": {
+    "@types/mdast": "^4.0.4",
+    "@types/node": "^22.10.0",
+    "@types/semver": "^7.7.0",
+    "@vercel/ncc": "^0.38.4",
+    "typescript": "^5.9.3",
+    "vitest": "^3.2.4"
+  },
+  "bin": {
+    "doceye": "dist-cli/index.js"
+  }
+}

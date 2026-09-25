@@ -1,0 +1,47 @@
+name: DocEye
+description: Detect documentation drift by cross-checking documentation against repository files, package metadata, commands, workflows, and project configuration.
+author: DocEye contributors
+branding:
+  icon: eye
+  color: blue
+
+inputs:
+  readme:
+    description: Path to the README, relative to the repository root.
+    default: README.md
+  config:
+    description: Path to a DocEye configuration file. If empty, .doceye.yml, .doceye.yaml, doceye.yml and doceye.yaml are looked for in the repository root.
+    required: false
+    default: ""
+  check-external-links:
+    description: Check external http(s) URLs. Set to false to skip all network requests.
+    default: "true"
+  comment:
+    description: On pull requests, create or update a single summary comment. Requires the pull-requests write permission.
+    default: "true"
+  fail-on:
+    description: Lowest severity that fails the step. One of error, warning, notice, none.
+    default: error
+  json-file:
+    description: Write a JSON report to this path inside the workspace.
+    required: false
+    default: ""
+  sarif-file:
+    description: Write a SARIF 2.1.0 report to this path inside the workspace, for github/codeql-action/upload-sarif.
+    required: false
+    default: ""
+  cache-file:
+    description: A .json path inside the workspace where successful external link results are remembered. Persist it between runs with actions/cache.
+    required: false
+    default: ""
+  github-token:
+    description: Token used to post the pull request summary comment.
+    default: ${{ github.token }}
+
+outputs:
+  findings-count:
+    description: Number of documentation findings reported after ignores were applied.
+
+runs:
+  using: node24
+  main: dist/index.js

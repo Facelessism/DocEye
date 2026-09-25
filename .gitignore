@@ -1,0 +1,8 @@
+node_modules/
+coverage/
+dist-cli/
+.doceye-cache/
+*.log
+.DS_Store
+.idea/
+.vscode/

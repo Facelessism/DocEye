@@ -1,0 +1,4 @@
+# DocEye checks its own documentation.
+fail-on: warning
+external-links:
+  max-urls: 50
